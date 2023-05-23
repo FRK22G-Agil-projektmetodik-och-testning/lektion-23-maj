@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import Event from "../components/Event";
+import './Events.scss';
 
 function Events() {
     const [events, setEvents] = useState([]);
-    const navigate = useNavigate();
 
     useEffect(() => {
       async function getEvents() {
@@ -16,22 +16,19 @@ function Events() {
       getEvents();
     }, [])
 
-    const eventComponents = events.map((event) => {
-      return (
-        <article data-id="event" onClick={ () => { navigate('/buy') }}>
-          <aside data-id="eventDate">{ event.when.date }</aside>
-          <h2 data-id="eventTitle">{ event.name }</h2>
-          <h3 data-id="eventPlace">{ event.where }</h3>
-          <p data-id="eventTime">{ event.when.from } - { event.when.to }</p>
-          <p data-id="eventPrice">{ event.price } kr</p>
-        </article>
-      )
+    const eventComponents = events.map((event, index) => {
+      return <Event event={ event } key={ index } />
     });
 
     return (
-      <section>
-        { eventComponents }
-      </section>
+      <main className="events">
+        <header>
+          <h1>Events</h1>
+        </header>
+        <section className="content">
+          { eventComponents }
+        </section>
+      </main>
     )
   }
 export default Events;

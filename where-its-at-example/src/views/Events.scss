@@ -1,0 +1,31 @@
+@import '../scss/variables';
+
+.events {
+    background: $darkblue;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem;
+    box-sizing: border-box;
+
+    header {
+        @extend %center;
+        flex-direction: column;
+
+        h1 {
+            color: $pink;
+            font-size: 2.2rem;
+            margin: .5rem 0;
+        }
+    }
+
+    .content {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        flex: 7;
+        overflow: scroll;
+        margin-top: 1rem;
+    }    
+}
